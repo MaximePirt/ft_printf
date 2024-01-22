@@ -6,45 +6,50 @@
 #    By: mpierrot <mpierrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:31:37 by mpierrot          #+#    #+#              #
-#    Updated: 2023/11/23 20:43:01 by mpierrot         ###   ########.fr        #
+#    Updated: 2024/01/18 21:25:12 by mpierrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+HDRDIR   = includes
+SRCDIR   = srcs
+OBJDIR   = objs
 
-SRCS = ft_printf.c \
-       conversion_c.c \
-       conversion_s.c \
-       conversion_p.c \
-       conversion_d.c \
-       conversion_u.c \
-       conversion_x.c \
-       conversion_percent.c \
-       utils.c
+SRCS     = srcs/ft_printf.c \
+			srcs/ft_usefulfonc.c \
+			srcs/libft_functions.c
+OBJS     = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+NAME     = libftprintf.a
+CC       = clang
+CFLAGS   = -Wall -Wextra -Werror
+RM       = rm -rf
+AR       = ar rcs
 
-OBJS = $(SRCS:.c=.o)
-
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
+DEFCOLOR = \033[0;39m
+GREEN    = \033[0;92m
+YELLOW   = \033[0;93m
+BLUE     = \033[0;94m
+CYAN     = \033[0;96m
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(AR) $@ $^
-	@echo "$(NAME) has been created successfully."
+	@$(AR) $(NAME) $(OBJS)
+	@echo "$(GREEN)ft_printf has been successfully compiled$(DEFCOLOR)"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(OBJDIR)
+	@echo "$(YELLOW)Compiling: $< $(DEFCOLOR)"
+	@$(CC) $(CFLAGS) -I $(HDRDIR) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
-	@echo "Object files have been removed."
+	@$(RM) objs
+	@echo "$(BLUE)ft_printf object files cleaned!$(DEFCOLOR)"
 
 fclean: clean
-	rm -rf $(NAME)
-	@echo "$(NAME) has been removed."
+	@$(RM) $(NAME)
+	@echo "$(CYAN)ft_printf executable has been cleaned!$(DEFCOLOR)"
 
 re: fclean all
+	@echo "$(GREEN)Cleaned and rebuilt successfully!$(DEFCOLOR)"
 
 .PHONY: all clean fclean re
