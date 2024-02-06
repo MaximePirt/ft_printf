@@ -6,7 +6,7 @@
 /*   By: mpierrot <mpierrot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 20:15:19 by mpierrot          #+#    #+#             */
-/*   Updated: 2024/01/22 20:22:50 by mpierrot         ###   ########.fr       */
+/*   Updated: 2024/02/06 12:42:00 by mpierrot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ static int	ft_printf_sorter(char *c, va_list *args)
 	else if (*c == 's')
 		return (ft_putstr(va_arg(*args, char *)));
 	else if (*c == 'p')
-	{
-		ft_putstr("0x");
 		return (ft_putptr(va_arg(*args, void *)) + 2);
-	}
 	else if (*c == 'd' || *c == 'i')
 		return (ft_putnbr(va_arg(*args, int)));
 	else if (*c == 'u')
@@ -60,28 +57,6 @@ static int	ft_printf_searcher(const char *format, va_list *args)
 	return (res);
 }
 
-/*static int	ft_printf_searcher(char *format, va_list *args)
-{
-	int	res;
-
-	res = 0;
-	while (*format)
-	{
-		while (*format && *format != '%')
-		{
-			res += ft_putchar(*format);
-			format++;
-		}
-		if (!*format)
-			break ;
-		res += ft_putchar(*format);
-		format++;
-		ft_printf_sorter(format, args);
-		format++;
-	}
-	return (res);
-}*/
-
 int	ft_printf(const char *format, ...)
 {
 	int		i;
@@ -93,10 +68,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (i);
 }
-
-/*#include <stdio.h>
-
-int main (void)
-{
-	return(ft_printf("%c", 'c'));
-}*/

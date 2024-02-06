@@ -6,7 +6,7 @@
 #    By: mpierrot <mpierrot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 20:31:37 by mpierrot          #+#    #+#              #
-#    Updated: 2024/01/18 21:25:12 by mpierrot         ###   ########.fr        #
+#    Updated: 2024/02/06 12:35:41 by mpierrot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ OBJDIR   = objs
 
 SRCS     = srcs/ft_printf.c \
 			srcs/ft_usefulfonc.c \
-			srcs/libft_functions.c
+			srcs/libft_functions.c \
+			srcs/ft_putptrfunc.c
 OBJS     = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 NAME     = libftprintf.a
 CC       = clang
