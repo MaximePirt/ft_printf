@@ -1,0 +1,20 @@
+title: ft_printf
+origin: 42
+domains: [systems]
+summary:
+  fr: 42 • C / variadic
+  en: 42 • C / variadic
+description:
+  fr: >
+    Réimplémentation de printf en C, sous forme de librairie statique
+    (libftprintf.a), gérant les conversions %c, %s, %p, %d, %i, %u, %x, %X
+    et %%. Le projet met en pratique les fonctions variadiques (stdarg.h)
+    pour parser une chaîne de format et lire un nombre variable d'arguments
+    de types différents.
+  en: >
+    Reimplementation of printf in C, built as a static library
+    (libftprintf.a), handling the %c, %s, %p, %d, %i, %u, %x, %X and %%
+    conversions. The project practices variadic functions (stdarg.h) to
+    parse a format string and read a variable number of arguments of
+    different types.
+stack: [C, Makefile]
